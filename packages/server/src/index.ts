@@ -54,7 +54,7 @@ import { Credential } from './database/entities/Credential'
 import { Tool } from './database/entities/Tool'
 import { ChatflowPool } from './ChatflowPool'
 import { ICommonObject, INodeOptionsValue } from 'flowise-components'
-import { createRateLimiter, getRateLimiter, initializeRateLimiter } from './utils/rateLimit'
+import { createRateLimiter, getRateLimiter } from './utils/rateLimit'
 
 export class App {
     app: express.Application
@@ -89,8 +89,8 @@ export class App {
                 await getEncryptionKey()
 
                 // Initialize Rate Limit
-                const AllChatFlow: IChatFlow[] = await getAllChatFlow()
-                await initializeRateLimiter(AllChatFlow)
+                // const AllChatFlow: IChatFlow[] = await getAllChatFlow()
+                // await initializeRateLimiter(AllChatFlow)
             })
             .catch((err) => {
                 logger.error('❌ [server]: Error during Data Source initialization:', err)
@@ -266,8 +266,10 @@ export class App {
         // ----------------------------------------
 
         // Get all chatflows
-        this.app.get('/api/v1/chatflows', async (req: Request, res: Response) => {
-            const chatflows: IChatFlow[] = await getAllChatFlow()
+        this.app.get('/api/v1/allchatflows/:providerAccountId', async (req: Request, res: Response) => {
+            console.log('provder accounttt id', req.params.providerAccountId)
+            const chatflows: IChatFlow[] = await getAllChatFlow(req.params.providerAccountId)
+            console.log('chatflows', chatflows)
             return res.json(chatflows)
         })
 
@@ -1026,8 +1028,9 @@ export async function getChatId(chatflowid: string) {
 
 let serverApp: App | undefined
 
-export async function getAllChatFlow(): Promise<IChatFlow[]> {
-    return await getDataSource().getRepository(ChatFlow).find()
+export async function getAllChatFlow(providerAccountId: string): Promise<IChatFlow[]> {
+    // @ts-ignore
+    return await getDataSource().getRepository(ChatFlow).findBy({ providerAccountId })
 }
 
 export async function start(): Promise<void> {

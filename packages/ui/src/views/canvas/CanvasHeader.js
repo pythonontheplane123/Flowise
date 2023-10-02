@@ -174,8 +174,9 @@ const CanvasHeader = ({ chatflow, handleSaveFlow, handleDeleteFlow, handleLoadFl
                             }
                         }}
                         color='inherit'
-                        onClick={() =>
-                            window.history.state && window.history.state.idx > 0 ? navigate(-1) : navigate('/', { replace: true })
+                        onClick={
+                            () => navigate(`/${localStorage.getItem('providerAccountId')}`, { replace: true })
+                            // window.history.state && window.history.state.idx > 0 ? navigate(-1) : navigate('/', { replace: true })
                         }
                     >
                         <IconChevronLeft stroke={1.5} size='1.3rem' />

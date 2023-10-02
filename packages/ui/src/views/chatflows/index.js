@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 // material-ui
@@ -25,10 +25,14 @@ import { baseURL } from 'store/constant'
 
 // icons
 import { IconPlus } from '@tabler/icons'
+// import { withRouter } from "react-router";
 
 // ==============================|| CHATFLOWS ||============================== //
 
 const Chatflows = () => {
+    // console.log('chat flows component loaded', props)
+    const { userId } = useParams()
+    console.log('userId', userId)
     const navigate = useNavigate()
     const theme = useTheme()
     const customization = useSelector((state) => state.customization)
@@ -55,7 +59,10 @@ const Chatflows = () => {
     }
 
     useEffect(() => {
-        getAllChatflowsApi.request()
+        localStorage.setItem('providerAccountId', userId)
+        console.log('getAllChatflowsApi id passed', localStorage.getItem('providerAccountId'))
+        // let providerAccountId = localStorage.getItem('providerAccountId')
+        getAllChatflowsApi.request(userId)
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

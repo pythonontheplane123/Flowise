@@ -19,6 +19,8 @@ export class Credential implements ICredential {
     @CreateDateColumn()
     createdDate: Date
 
+    
+
     @UpdateDateColumn()
     updatedDate: Date
 }

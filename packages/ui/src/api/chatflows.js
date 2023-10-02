@@ -1,6 +1,6 @@
 import client from './client'
 
-const getAllChatflows = () => client.get('/chatflows')
+const getAllChatflows = (id) => client.get(`/allchatflows/${id}`)
 
 const getSpecificChatflow = (id) => client.get(`/chatflows/${id}`)
 

@@ -211,6 +211,7 @@ const Canvas = () => {
                     name: chatflowName,
                     deployed: false,
                     isPublic: false,
+                    providerAccountId: localStorage.getItem('providerAccountId'),
                     flowData
                 }
                 createNewChatflowApi.request(newChatflowBody)

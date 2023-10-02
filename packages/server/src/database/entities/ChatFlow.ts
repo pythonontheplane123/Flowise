@@ -28,6 +28,9 @@ export class ChatFlow implements IChatFlow {
     @Column({ nullable: true, type: 'text' })
     apiConfig?: string
 
+    @Column({ nullable: false, type: 'text' })
+    providerAccountId: string
+
     @CreateDateColumn()
     createdDate: Date
 

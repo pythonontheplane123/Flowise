@@ -16,6 +16,7 @@ export interface IChatFlow {
     apikeyid?: string
     chatbotConfig?: string
     apiConfig?: any
+    providerAccountId: string
 }
 
 export interface IChatMessage {
