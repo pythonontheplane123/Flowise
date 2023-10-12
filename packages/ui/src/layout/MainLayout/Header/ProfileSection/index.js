@@ -30,7 +30,7 @@ import { BackdropLoader } from 'ui-component/loading/BackdropLoader'
 import AboutDialog from 'ui-component/dialog/AboutDialog'
 
 // assets
-import { IconLogout, IconSettings, IconFileExport, IconFileDownload, IconInfoCircle } from '@tabler/icons'
+import { IconLogout, IconSettings, IconFileExport, IconFileDownload } from '@tabler/icons'
 
 // API
 import databaseApi from 'api/database'
@@ -217,7 +217,7 @@ const ProfileSection = ({ username, handleLogout }) => {
                                                     </ListItemIcon>
                                                     <ListItemText primary={<Typography variant='body2'>Export Database</Typography>} />
                                                 </ListItemButton>
-                                                <ListItemButton
+                                                {/* <ListItemButton
                                                     sx={{ borderRadius: `${customization.borderRadius}px` }}
                                                     onClick={() => {
                                                         setOpen(false)
@@ -228,7 +228,7 @@ const ProfileSection = ({ username, handleLogout }) => {
                                                         <IconInfoCircle stroke={1.5} size='1.3rem' />
                                                     </ListItemIcon>
                                                     <ListItemText primary={<Typography variant='body2'>About Flowise</Typography>} />
-                                                </ListItemButton>
+                                                </ListItemButton> */}
                                                 {localStorage.getItem('username') && localStorage.getItem('password') && (
                                                     <ListItemButton
                                                         sx={{ borderRadius: `${customization.borderRadius}px` }}
