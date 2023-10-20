@@ -30,6 +30,8 @@ export class ChatFlow implements IChatFlow {
 
     @Column({ nullable: false, type: 'text' })
     providerAccountId: string
+    @Column({ nullable: true, type: 'text' })
+    analytic?: string
 
     @CreateDateColumn()
     createdDate: Date

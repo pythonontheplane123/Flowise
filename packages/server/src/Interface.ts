@@ -14,6 +14,7 @@ export interface IChatFlow {
     deployed?: boolean
     isPublic?: boolean
     apikeyid?: string
+    analytic?: string
     chatbotConfig?: string
     apiConfig?: any
     providerAccountId: string
@@ -155,6 +156,10 @@ export interface IActiveChatflows {
         inSync: boolean
         overrideConfig?: ICommonObject
     }
+}
+
+export interface IActiveCache {
+    [key: string]: Map<any, any>
 }
 
 export interface IOverrideConfig {
