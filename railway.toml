@@ -1,6 +1,6 @@
 [build]
-builder = "yarn"
-buildCommand = "yarn build"
+builder = "nixpacks"
+buildCommand = "yarn install; yarn build"
 
 [deploy]
 startCommand = "yarn start"
